@@ -1,0 +1,46 @@
+<h1 id="title" class="title">User Sign-Up</h1>
+<nb-card>
+  <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="danger" nbSpinnerSize="xlarge">
+    <div *ngIf="success" class="alert alert-success " role="alert">{{success}}</div>
+    <div *ngIf="error" class="alert alert-warning " role="alert">{{error}}</div>
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit()" aria-labelledby="title">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="username">Your first name</label>
+            <input required  type="text" class="form-control" [(ngModel)]="user.firstName" name="username">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="lastname">Your last name</label>
+            <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastname" placeholder="Your last name">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="inputEmail">Your Email ID</label>
+            <input required type="email" class="form-control" [(ngModel)]="user.email" name="inputEmail" placeholder="Email">
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="phone">Your Contact phone number</label>
+            <input required type="text" name="phone" class="form-control" [(ngModel)]="user.phone" placeholder="Your contact phone number">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="comment">Any other details like fleet size, your requirements etc</label>
+            <textarea required type="text" class="form-control" [(ngModel)]="user.comment" name="comment" placeholder="Request details "></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit" nbButton fullWidth [disabled]="!signupForm.form.valid">Submit</button>
+    </form>
+  </nb-card-body>
+</nb-card>
